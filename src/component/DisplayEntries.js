@@ -75,10 +75,11 @@ export default function DisplayEntries(props) {
             </Center>
           ) : (
             <div>
-              <Center maxWidth={1100} p={10}>
+              <Center p={10}>
                 <Heading>
                   Result from{' '}
-                  {props.dict.charAt(0).toUpperCase() + props.dict.slice(1)}
+                  {props.dict.charAt(0).toUpperCase() + props.dict.slice(1)}{' '}
+                  Dictionary
                 </Heading>
               </Center>
               <Divider orientation="horizontal" />
