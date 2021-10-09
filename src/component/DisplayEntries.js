@@ -29,7 +29,7 @@ export default function DisplayEntries(props) {
       return 0;
     }
 
-    const url = `http://fastapi-backend-kubygcfq3a-ue.a.run.app/${dict}/?search=${word}`;
+    const url = `https://fastapi-backend-kubygcfq3a-ue.a.run.app/${dict}/?search=${word}`;
 
     const fetchData = async () => {
       try {

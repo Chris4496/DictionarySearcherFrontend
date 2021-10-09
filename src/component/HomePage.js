@@ -24,7 +24,7 @@ export default function HomePage() {
   }
 
   useEffect(() => {
-    const url = 'http://fastapi-backend-kubygcfq3a-ue.a.run.app/';
+    const url = 'https://fastapi-backend-kubygcfq3a-ue.a.run.app/';
 
     const fetchData = async () => {
       try {
