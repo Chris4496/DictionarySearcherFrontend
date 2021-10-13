@@ -1,14 +1,12 @@
-import React, { useState, useEffect, forceUpdate } from 'react';
+import { useState, useEffect } from 'react';
 import {
-  Input,
-  Spinner,
   Center,
-  IconButton,
   VStack,
   StackDivider,
   Heading,
-  Box,
   Divider,
+  Stack,
+  SkeletonText,
 } from '@chakra-ui/react';
 import Entry from './Entry.js';
 
@@ -65,7 +63,9 @@ export default function DisplayEntries(props) {
     <div>
       {loading ? (
         <Center>
-          <Spinner size="xl" p={10} m={10} thickness="7px" />
+          <Stack w={1250} pt={40}>
+            <SkeletonText noOfLines={18} spacing="6" />
+          </Stack>
         </Center>
       ) : (
         <div>

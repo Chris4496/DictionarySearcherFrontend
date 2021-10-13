@@ -1,15 +1,8 @@
-import { Input, Spinner, Center, IconButton } from '@chakra-ui/react';
+import { Input, Center, IconButton } from '@chakra-ui/react';
 import { Heading } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
-import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import DisplayEntries from './DisplayEntries';
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-} from '@chakra-ui/react';
 
 export default function HomePage() {
   const valueref = useRef();
@@ -21,6 +14,14 @@ export default function HomePage() {
     const word = valueref.current;
     console.log(word.value);
     setvalue(word.value);
+  }
+
+  function searchWordEnter(e) {
+    if (e.key === 'Enter') {
+      const word = valueref.current;
+      console.log(word.value);
+      setvalue(word.value);
+    }
   }
 
   useEffect(() => {
@@ -56,6 +57,7 @@ export default function HomePage() {
           m={3}
           type="text"
           name="textvalue"
+          onKeyDown={searchWordEnter}
           ref={valueref}
         />
         <IconButton

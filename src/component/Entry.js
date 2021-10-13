@@ -1,21 +1,12 @@
-import React, { useState } from 'react';
-import {
-  Input,
-  Spinner,
-  Center,
-  IconButton,
-  Container,
-  Heading,
-} from '@chakra-ui/react';
+import { IconButton, Container, Heading } from '@chakra-ui/react';
 import {
   Divider,
-  VStack,
   Box,
-  StackDivider,
-  Button,
   HStack,
   Text,
   Stack,
+  OrderedList,
+  ListItem,
 } from '@chakra-ui/react';
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 
@@ -28,9 +19,9 @@ export default function Entry(props) {
 
   console.log(entry);
   function renderExplain(part) {
-    if (part['type'] == 'main') {
+    if (part['type'] === 'main') {
       return <Text fontSize="26px">{part.content}</Text>;
-    } else if (part['type'] == 'example') {
+    } else if (part['type'] === 'example') {
       return (
         <Stack direction="row" h={50} p={3}>
           <Divider orientation="vertical" />
@@ -63,9 +54,13 @@ export default function Entry(props) {
         ))}
       </HStack>
       <Box py={6}>
-        {explanation.map(orderedlist => (
-          <Box my={4}>{orderedlist.map(part => renderExplain(part))}</Box>
-        ))}
+        <OrderedList spacing={4}>
+          {explanation.map(orderedlist => (
+            <ListItem my={4}>
+              {orderedlist.map(part => renderExplain(part))}
+            </ListItem>
+          ))}
+        </OrderedList>
       </Box>
     </Container>
   );
