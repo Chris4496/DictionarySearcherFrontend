@@ -23,9 +23,11 @@ export default function Entry(props) {
       return <Text fontSize="26px">{part.content}</Text>;
     } else if (part['type'] === 'example') {
       return (
-        <Stack direction="row" h={50} p={3}>
-          <Divider orientation="vertical" />
-          <Text>{part.content}</Text>
+        <Stack direction="row" p={3}>
+          <Text>-</Text>
+          <Text as="i" fontSize="lg">
+            {part.content}
+          </Text>
         </Stack>
       );
     }

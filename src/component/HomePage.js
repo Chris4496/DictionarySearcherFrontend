@@ -52,6 +52,7 @@ export default function HomePage() {
       <Center>
         <Input
           placeholder="Search here.."
+          autocomplete="off"
           size="lg"
           maxWidth={1200}
           m={3}

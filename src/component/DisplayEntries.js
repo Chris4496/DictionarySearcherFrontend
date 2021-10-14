@@ -70,9 +70,19 @@ export default function DisplayEntries(props) {
       ) : (
         <div>
           {noresult ? (
-            <Center p="10">
-              <Heading>No Result</Heading>
-            </Center>
+            <div>
+              <Center p={10}>
+                <Heading>
+                  Result from{' '}
+                  {props.dict.charAt(0).toUpperCase() + props.dict.slice(1)}{' '}
+                  Dictionary
+                </Heading>
+              </Center>
+              <Divider orientation="horizontal" />
+              <Center p="10">
+                <Heading>No Result</Heading>
+              </Center>
+            </div>
           ) : (
             <div>
               <Center p={10}>
