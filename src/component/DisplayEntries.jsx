@@ -55,7 +55,7 @@ export default function DisplayEntries(props) {
     <div>
       {loading ? (
         <Center>
-          <Stack w={1250} pt={40}>
+          <Stack w={1250} pt={40} px={6}>
             <SkeletonText noOfLines={18} spacing="6" />
           </Stack>
         </Center>
@@ -70,7 +70,7 @@ export default function DisplayEntries(props) {
                   Dictionary
                 </Heading>
               </Center>
-              <Divider orientation="horizontal" />
+              <Divider orientation="horizontal" borderColor="grey.200"/>
               <Center p="10">
                 <Heading >No Result</Heading>
               </Center>
@@ -84,13 +84,15 @@ export default function DisplayEntries(props) {
                   Dictionary
                 </Heading>
               </Center>
-              <Divider orientation="horizontal" />
+              <Divider orientation="horizontal" borderColor="grey.200"/>
               <Center>
                 <VStack
-                  divider={<StackDivider borderColor="gray.200" />}
+                  divider={<StackDivider orientation="horizontal"/>}
                   spacing={4}
                   align="stretch"
                   w={1100}
+                  minW="100%"
+                  maxW={1100}
                   p={{ base: "5", lg: "10" }}
                 >
                   {entries.map(entry => (

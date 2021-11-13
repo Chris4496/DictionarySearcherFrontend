@@ -6,6 +6,7 @@ import {
   Stack,
   OrderedList,
   ListItem,
+  Flex
 } from '@chakra-ui/react';
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 
@@ -35,7 +36,7 @@ export default function Entry(props) {
   return (
     <Container maxW={1000}>
       <Box py="1">
-        <Heading fontSize={{ base: "35px", md: "40px", lg: "53px" }}>{word}</Heading>
+          <Heading fontSize={{ base: "35px", md: "40px", lg: "53px" }}>{word}</Heading>
       </Box>
       <Box>
         <Text fontSize="md">{wordType}</Text>
