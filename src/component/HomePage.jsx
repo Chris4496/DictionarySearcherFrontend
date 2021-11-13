@@ -45,8 +45,8 @@ export default function HomePage() {
   return (
     <div>
       <Center>
-        <Heading fontSize="3xl">
-          Search a word and get results form multiple dictionaries
+        <Heading fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}>
+          Search a word and get results from multiple dictionaries
         </Heading>
       </Center>
       <Center>

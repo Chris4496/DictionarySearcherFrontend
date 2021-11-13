@@ -8,7 +8,7 @@ import {
   Stack,
   SkeletonText,
 } from '@chakra-ui/react';
-import Entry from './Entry.js';
+import Entry from './Entry.jsx';
 
 export default function DisplayEntries(props) {
   const [loading, setloading] = useState(true);
@@ -72,7 +72,7 @@ export default function DisplayEntries(props) {
           {noresult ? (
             <div>
               <Center p={10}>
-                <Heading>
+                <Heading fontSize={{ base: "2xl", lg: "3xl" }}>
                   Result from{' '}
                   {props.dict.charAt(0).toUpperCase() + props.dict.slice(1)}{' '}
                   Dictionary
@@ -80,13 +80,13 @@ export default function DisplayEntries(props) {
               </Center>
               <Divider orientation="horizontal" />
               <Center p="10">
-                <Heading>No Result</Heading>
+                <Heading >No Result</Heading>
               </Center>
             </div>
           ) : (
             <div>
               <Center p={10}>
-                <Heading>
+                <Heading fontSize={{ base: "2xl", lg: "3xl" }}>
                   Result from{' '}
                   {props.dict.charAt(0).toUpperCase() + props.dict.slice(1)}{' '}
                   Dictionary
@@ -99,7 +99,7 @@ export default function DisplayEntries(props) {
                   spacing={4}
                   align="stretch"
                   w={1100}
-                  p={10}
+                  p={{ base: "5", lg: "10" }}
                 >
                   {entries.map(entry => (
                     <Entry key={entry.id} content={entry} />

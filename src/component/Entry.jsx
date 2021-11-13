@@ -1,6 +1,5 @@
 import { IconButton, Container, Heading } from '@chakra-ui/react';
 import {
-  Divider,
   Box,
   HStack,
   Text,
@@ -20,12 +19,12 @@ export default function Entry(props) {
   console.log(entry);
   function renderExplain(part) {
     if (part['type'] === 'main') {
-      return <Text fontSize="26px">{part.content}</Text>;
+      return <Text fontSize={{ base: "22px", md: "24px", lg: "26px" }}>{part.content}</Text>;
     } else if (part['type'] === 'example') {
       return (
         <Stack direction="row" p={3}>
           <Text>-</Text>
-          <Text as="i" fontSize="lg">
+          <Text as="i" fontSize={{ base: "md", lg: "lg" }}>
             {part.content}
           </Text>
         </Stack>
@@ -36,7 +35,7 @@ export default function Entry(props) {
   return (
     <Container maxW={1000}>
       <Box py="1">
-        <Heading size="2xl">{word}</Heading>
+        <Heading fontSize={{ base: "35px", md: "40px", lg: "53px" }}>{word}</Heading>
       </Box>
       <Box>
         <Text fontSize="md">{wordType}</Text>
@@ -56,9 +55,9 @@ export default function Entry(props) {
         ))}
       </HStack>
       <Box py={6}>
-        <OrderedList spacing={4}>
+        <OrderedList spacing={6}>
           {explanation.map(orderedlist => (
-            <ListItem my={4}>
+            <ListItem my={3}>
               {orderedlist.map(part => renderExplain(part))}
             </ListItem>
           ))}
