@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://chris4496.github.io/DictionarySearcherFrontend/
 
 ## Available Scripts
 
