@@ -5,8 +5,7 @@ import {
   Text,
   Stack,
   OrderedList,
-  ListItem,
-  Flex
+  ListItem
 } from '@chakra-ui/react';
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 
