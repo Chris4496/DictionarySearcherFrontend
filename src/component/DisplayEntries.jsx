@@ -49,15 +49,7 @@ export default function DisplayEntries(props) {
     };
 
     fetchData();
-  }, [props.word]);
-
-  // fetch('http://fastapi-backend-kubygcfq3a-ue.a.run.app/cambridge/?search=cock')
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     setEntries(data);
-  //     setloading(false);
-  //     console.log(data);
-  //   });
+  }, [props.word, props.dict]);
 
   return (
     <div>
