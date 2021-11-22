@@ -52,7 +52,7 @@ export default function DisplayEntries(props) {
   }, [props.word, props.dict]);
 
   return (
-    <div>
+    <div id={props.dict}>
       {loading ? (
         <Center>
           <Stack w={1250} pt={40} px={6}>
