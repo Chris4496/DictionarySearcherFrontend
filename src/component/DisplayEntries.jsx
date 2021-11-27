@@ -55,7 +55,7 @@ export default function DisplayEntries(props) {
   }, [props.word, props.dict]);
 
   return (
-    <div id={props.dict["name"]}>
+    <div id={props.dict.name}>
       {loading ? (
         <Center>
           <Stack w={1250} pt={40} px={6}>
@@ -69,7 +69,7 @@ export default function DisplayEntries(props) {
               <Center p={10}>
                 <Heading fontSize={{ base: "2xl", lg: "3xl" }}>
                   Result from{' '}
-                  {props.dict["name"].charAt(0).toUpperCase() + props.dict["name"].slice(1)}{' '}
+                  {props.dict.name.charAt(0).toUpperCase() + props.dict.name.slice(1)}{' '}
                   Dictionary
                 </Heading>
               </Center>
@@ -83,7 +83,7 @@ export default function DisplayEntries(props) {
               <Center p={10}>
                 <Heading fontSize={{ base: "2xl", lg: "3xl" }}>
                   Result from{' '}
-                  {props.dict["name"].charAt(0).toUpperCase() + props.dict["name"].slice(1)}{' '}
+                  {props.dict.name.charAt(0).toUpperCase() + props.dict.name.slice(1)}{' '}
                   Dictionary
                 </Heading>
               </Center>
@@ -105,7 +105,7 @@ export default function DisplayEntries(props) {
               </Center>
               <Center>
                 <Container maxW={1000} mb="6">
-                  <Link href={props.dict['searchQuery'] + props.word} color="blue.500" isExternal>Link to Dictionary <ExternalLinkIcon mx="2px" /></Link>
+                  <Link href={props.dict.searchQuery + props.word} color="blue.500" isExternal>Link to Dictionary <ExternalLinkIcon mx="2px" /></Link>
                 </Container>
               </Center>
             </div>
