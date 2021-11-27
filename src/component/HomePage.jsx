@@ -37,21 +37,21 @@ export default function HomePage() {
         const response = await fetch(url);
         const json = await response.json();
         console.log(json);
-        // setdictList(json);
-        setdictList([
-          {
-            "name": "cambridge",
-            "searchQuery": "https://dictionary.cambridge.org/dictionary/english/"
-          },
-          {
-            "name": "oxford",
-            "searchQuery": "https://www.oxfordlearnersdictionaries.com/definition/english/"
-          },
-          {
-            "name": "merriamwebster",
-            "searchQuery": "https://www.merriam-webster.com/dictionary/"
-          }
-        ]);
+        setdictList(json);
+        // setdictList([
+        //   {
+        //     "name": "cambridge",
+        //     "searchQuery": "https://dictionary.cambridge.org/dictionary/english/"
+        //   },
+        //   {
+        //     "name": "oxford",
+        //     "searchQuery": "https://www.oxfordlearnersdictionaries.com/definition/english/"
+        //   },
+        //   {
+        //     "name": "merriamwebster",
+        //     "searchQuery": "https://www.merriam-webster.com/dictionary/"
+        //   }
+        // ]);
       } catch (error) {
         console.log('error', error);
       }
