@@ -65,9 +65,9 @@ export default function HomePage() {
     return (
       <Breadcrumb fontWeight="medium" fontSize="lg" borderRadius="xl" m="3" py="2" px="4" boxShadow="dark-lg">
         {dictList.map(dict => (
-          <BreadcrumbItem key={dict["name"]}>
-            <BreadcrumbLink href={`#${dict["name"]}`}>
-              {dict["name"].charAt(0).toUpperCase() + dict["name"].slice(1)}
+          <BreadcrumbItem key={dict.name}>
+            <BreadcrumbLink href={`#${dict.name}`}>
+              {dict.name.charAt(0).toUpperCase() + dict.name.slice(1)}
             </BreadcrumbLink>
           </BreadcrumbItem>
         ))}
