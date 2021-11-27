@@ -69,7 +69,7 @@ export default function DisplayEntries(props) {
               <Center p={10}>
                 <Heading fontSize={{ base: "2xl", lg: "3xl" }}>
                   Result from{' '}
-                  {props.dict.name.charAt(0).toUpperCase() + props.dict.name.slice(1)}{' '}
+                  {props.dict.name[0].toUpperCase() + props.dict.name.slice(1)}{' '}
                   Dictionary
                 </Heading>
               </Center>
@@ -83,7 +83,7 @@ export default function DisplayEntries(props) {
               <Center p={10}>
                 <Heading fontSize={{ base: "2xl", lg: "3xl" }}>
                   Result from{' '}
-                  {props.dict.name.charAt(0).toUpperCase() + props.dict.name.slice(1)}{' '}
+                  {props.dict.name[0].toUpperCase() + props.dict.name.slice(1)}{' '}
                   Dictionary
                 </Heading>
               </Center>
