@@ -37,8 +37,21 @@ export default function HomePage() {
         const response = await fetch(url);
         const json = await response.json();
         console.log(json);
-        setdictList(json);
-        // setdictList(['cambridge', 'cambridge', 'cambridge']);
+        // setdictList(json);
+        setdictList([
+          {
+            "name": "cambridge",
+            "searchQuery": "https://dictionary.cambridge.org/dictionary/english/"
+          },
+          {
+            "name": "oxford",
+            "searchQuery": "https://www.oxfordlearnersdictionaries.com/definition/english/"
+          },
+          {
+            "name": "merriamwebster",
+            "searchQuery": "https://www.merriam-webster.com/dictionary/"
+          }
+        ]);
       } catch (error) {
         console.log('error', error);
       }
@@ -52,9 +65,9 @@ export default function HomePage() {
     return (
       <Breadcrumb fontWeight="medium" fontSize="lg" borderRadius="xl" m="3" py="2" px="4" boxShadow="dark-lg">
         {dictList.map(dict => (
-          <BreadcrumbItem key={dict}>
-            <BreadcrumbLink href={`#${dict}`}>
-              {dict.charAt(0).toUpperCase() + dict.slice(1)}
+          <BreadcrumbItem key={dict["name"]}>
+            <BreadcrumbLink href={`#${dict["name"]}`}>
+              {dict["name"].charAt(0).toUpperCase() + dict["name"].slice(1)}
             </BreadcrumbLink>
           </BreadcrumbItem>
         ))}

@@ -7,7 +7,10 @@ import {
   Divider,
   Stack,
   SkeletonText,
+  Link,
+  Container,
 } from '@chakra-ui/react';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 import Entry from './Entry.jsx';
 
 export default function DisplayEntries(props) {
@@ -27,7 +30,7 @@ export default function DisplayEntries(props) {
       return 0;
     }
 
-    const url = `https://fastapi-backend-kubygcfq3a-ue.a.run.app/${dict}/?search=${word}`;
+    const url = `https://fastapi-backend-kubygcfq3a-ue.a.run.app/${dict["name"]}/?search=${word}`;
 
     const fetchData = async () => {
       try {
@@ -52,7 +55,7 @@ export default function DisplayEntries(props) {
   }, [props.word, props.dict]);
 
   return (
-    <div id={props.dict}>
+    <div id={props.dict["name"]}>
       {loading ? (
         <Center>
           <Stack w={1250} pt={40} px={6}>
@@ -66,7 +69,7 @@ export default function DisplayEntries(props) {
               <Center p={10}>
                 <Heading fontSize={{ base: "2xl", lg: "3xl" }}>
                   Result from{' '}
-                  {props.dict.charAt(0).toUpperCase() + props.dict.slice(1)}{' '}
+                  {props.dict["name"].charAt(0).toUpperCase() + props.dict["name"].slice(1)}{' '}
                   Dictionary
                 </Heading>
               </Center>
@@ -80,7 +83,7 @@ export default function DisplayEntries(props) {
               <Center p={10}>
                 <Heading fontSize={{ base: "2xl", lg: "3xl" }}>
                   Result from{' '}
-                  {props.dict.charAt(0).toUpperCase() + props.dict.slice(1)}{' '}
+                  {props.dict["name"].charAt(0).toUpperCase() + props.dict["name"].slice(1)}{' '}
                   Dictionary
                 </Heading>
               </Center>
@@ -99,6 +102,11 @@ export default function DisplayEntries(props) {
                     <Entry key={entry.id} content={entry} />
                   ))}
                 </VStack>
+              </Center>
+              <Center>
+                <Container maxW={1000} mb="6">
+                  <Link href={props.dict['searchQuery'] + props.word} color="blue.500" isExternal>Link to Dictionary <ExternalLinkIcon mx="2px" /></Link>
+                </Container>
               </Center>
             </div>
           )}
