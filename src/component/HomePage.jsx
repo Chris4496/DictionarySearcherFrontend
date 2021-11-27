@@ -67,7 +67,7 @@ export default function HomePage() {
         {dictList.map(dict => (
           <BreadcrumbItem key={dict.name}>
             <BreadcrumbLink href={`#${dict.name}`}>
-              {dict.name.charAt(0).toUpperCase() + dict.name.slice(1)}
+              {dict.name[0].toUpperCase() + dict.name.slice(1)}
             </BreadcrumbLink>
           </BreadcrumbItem>
         ))}
