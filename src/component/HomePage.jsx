@@ -7,7 +7,11 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-} from "@chakra-ui/react";
+  Stack,
+  Box,
+  Text,
+} from '@chakra-ui/react';
+import { FaGithub } from 'react-icons/fa';
 
 export default function HomePage() {
   const valueref = useRef();
@@ -60,10 +64,17 @@ export default function HomePage() {
     fetchData();
   }, []);
 
-  
   function renderNav() {
     return (
-      <Breadcrumb fontWeight="medium" fontSize="lg" borderRadius="xl" m="3" py="2" px="4" boxShadow="dark-lg">
+      <Breadcrumb
+        fontWeight="medium"
+        fontSize="lg"
+        borderRadius="xl"
+        m="3"
+        py="2"
+        px="4"
+        boxShadow="dark-lg"
+      >
         {dictList.map(dict => (
           <BreadcrumbItem key={dict.name}>
             <BreadcrumbLink href={`#${dict.name}`}>
@@ -78,7 +89,7 @@ export default function HomePage() {
   return (
     <div>
       <Center>
-        <Heading fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}>
+        <Heading fontSize={{ base: 'xl', md: '2xl', lg: '3xl' }}>
           Search a word and get results from multiple dictionaries
         </Heading>
       </Center>
@@ -108,6 +119,31 @@ export default function HomePage() {
       {dictList.map(dict => (
         <DisplayEntries word={value} dict={dict} />
       ))}
+      <Box
+        as="footer"
+        role="contentinfo"
+        mx="auto"
+        maxW="7xl"
+        py="12"
+        px={{ base: '4', md: '8' }}
+      >
+        <Stack
+          direction="row"
+          spacing="4"
+          align="center"
+          justify="space-between"
+        >
+          <Text fontSize="sm">
+            &copy; {new Date().getFullYear()} Chris K. All rights reserved.
+          </Text>
+          <IconButton
+            as="a"
+            href="https://github.com/Chris4496/DictionarySearcherFrontend"
+            aria-label="GitHub"
+            icon={<FaGithub fontSize="20px" />}
+          />
+        </Stack>
+      </Box>
     </div>
   );
 }
