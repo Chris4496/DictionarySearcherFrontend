@@ -3,16 +3,23 @@ import { ChakraProvider, theme } from '@chakra-ui/react';
 
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import HomePage from './component/HomePage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export default function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <Helmet>
-        <html lang="en" />
-        <title>Dictionary Searcher</title>
-      </Helmet>
-      <ColorModeSwitcher></ColorModeSwitcher>
-      <HomePage />
-    </ChakraProvider>
+    <Router>
+      <ChakraProvider theme={theme}>
+        <Helmet>
+          <html lang="en" />
+          <title>Dictionary Searcher</title>
+        </Helmet>
+        <ColorModeSwitcher></ColorModeSwitcher>
+        <Routes>
+          <Route path="search/:word" element={<HomePage />} />
+          <Route path="/search/" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </ChakraProvider>
+    </Router>
   );
 }

@@ -12,17 +12,22 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
+import { useParams, useNavigate} from "react-router-dom";
 
 export default function HomePage() {
-  const valueref = useRef();
+  let params = useParams();
+  let navigate = useNavigate('undefined');
 
-  const [value, setvalue] = useState();
+  const valueref = useRef('');
+
+  const [value, setvalue] = useState(params.word);
   const [dictList, setdictList] = useState([]);
 
   function searchWord() {
     const word = valueref.current;
     console.log(word.value);
     setvalue(word.value);
+    navigate(`/search/${valueref.current.value}`);
   }
 
   function searchWordEnter(e) {
@@ -30,10 +35,12 @@ export default function HomePage() {
       const word = valueref.current;
       console.log(word.value);
       setvalue(word.value);
+      navigate(`/search/${valueref.current.value}`);
     }
   }
 
   useEffect(() => {
+  
     const url = 'https://fastapi-backend-kubygcfq3a-ue.a.run.app/';
 
     const fetchData = async () => {
@@ -119,6 +126,7 @@ export default function HomePage() {
       {dictList.map(dict => (
         <DisplayEntries word={value} dict={dict} />
       ))}
+      {/* footer */}
       <Box
         as="footer"
         role="contentinfo"
@@ -144,6 +152,7 @@ export default function HomePage() {
           />
         </Stack>
       </Box>
+      {/* footer */}
     </div>
   );
 }
