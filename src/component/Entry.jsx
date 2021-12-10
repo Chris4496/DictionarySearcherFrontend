@@ -11,10 +11,10 @@ import { InfoOutlineIcon } from '@chakra-ui/icons';
 
 export default function Entry(props) {
   const entry = props.content;
-  const word = entry['word'];
-  const wordType = entry['wordType'];
-  const audioLinks = entry['audioLinks'];
-  const explanation = entry['explanation'];
+  const word = entry.word;
+  const wordType = entry.wordType;
+  const audioLinks = entry.audioLinks;
+  const explanation = entry.explanation;
 
   console.log(entry);
   function renderExplain(part) {

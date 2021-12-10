@@ -3,6 +3,7 @@ import { Heading } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import { useState, useEffect, useRef } from 'react';
 import DisplayEntries from './DisplayEntries';
+import DisplaySynAnt from './DisplaySynAnt'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -126,6 +127,8 @@ export default function HomePage() {
       {dictList.map(dict => (
         <DisplayEntries word={value} dict={dict} />
       ))}
+
+      <DisplaySynAnt word={value}/>
       {/* footer */}
       <Box
         as="footer"
