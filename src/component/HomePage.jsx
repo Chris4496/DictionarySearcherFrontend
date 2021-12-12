@@ -3,7 +3,7 @@ import { Heading } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import { useState, useEffect, useRef } from 'react';
 import DisplayEntries from './DisplayEntries';
-import DisplaySynAnt from './DisplaySynAnt'
+import DisplaySynAnt from './DisplaySynAnt';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,7 +13,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
-import { useParams, useNavigate} from "react-router-dom";
+import { useParams, useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
   let params = useParams();
@@ -41,7 +41,6 @@ export default function HomePage() {
   }
 
   useEffect(() => {
-  
     const url = 'https://fastapi-backend-kubygcfq3a-ue.a.run.app/';
 
     const fetchData = async () => {
@@ -83,7 +82,7 @@ export default function HomePage() {
         px="4"
         boxShadow="dark-lg"
       >
-        {dictList.map(dict => (
+        {[...dictList, { name: 'SynAnt' }].map(dict => (
           <BreadcrumbItem key={dict.name}>
             <BreadcrumbLink href={`#${dict.name}`}>
               {dict.name[0].toUpperCase() + dict.name.slice(1)}
@@ -128,7 +127,7 @@ export default function HomePage() {
         <DisplayEntries word={value} dict={dict} />
       ))}
 
-      <DisplaySynAnt word={value}/>
+      <DisplaySynAnt word={value} />
       {/* footer */}
       <Box
         as="footer"

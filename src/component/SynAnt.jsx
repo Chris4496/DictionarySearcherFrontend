@@ -1,48 +1,95 @@
-import { IconButton, Container, Heading } from '@chakra-ui/react';
-import {
-  Box,
-  HStack,
-  Text,
-  Stack,
-  OrderedList,
-  ListItem
-} from '@chakra-ui/react';
-import { InfoOutlineIcon } from '@chakra-ui/icons';
-
+import { Container, Heading, WrapItem } from '@chakra-ui/react';
+import { Box, Text, Stack, Tag, Wrap, StackDivider } from '@chakra-ui/react';
 
 export default function SynAnt(props) {
-    const s = props.content
-    const definition = s.definition;
-    const pos = s.pos
-    const synonyms = s.synonyms
-    const antonyms = s.antonyms
+  const s = props.content;
+  const definition = s.definition;
+  const pos = s.pos;
+  const synonyms = s.synonyms;
+  const antonyms = s.antonyms;
 
-    function renderWords(words) {
-      let renderedString = ""
-      for (var i = 0; i < words.length; i++) {
-        renderedString = renderedString + words[i] + ' '
-      }
-      return renderedString
-    }
-
-    return (
-    <Container maxW={1000}>
-        <Box py="1">
-          <Heading fontSize={{ base: "20px", md: "25px", lg: "30px" }}>{definition}</Heading>
+  return (
+    <Container maxW={1000} py="5">
+      <Box py="1">
+        <Heading fontSize={{ base: '22px', md: '27px', lg: '32px' }}>
+          {definition}
+        </Heading>
+      </Box>
+      <Box>
+        <Text fontSize="md">{pos}</Text>
+      </Box>
+      <Stack
+        divider={<StackDivider orientation="horizontal" />}
+        spacing={4}
+        align="stretch"
+        minW="100%"
+        direction={['column', 'row']}
+        // maxW={1100}
+      >
+        <Box py={6}>
+          <Heading
+            as="h1"
+            size="md"
+            mb={4}
+            fontSize={{ base: '17px', md: '19px', lg: '21px' }}
+          >
+            Synomyms:
+          </Heading>
+          {Object.keys(synonyms).map(key => (
+            <Container key={key} my={3}>
+              <Text fontSize={{ base: '18px', md: '20px', lg: '22px' }}>
+                {'Similarity: ' + key + '%'}
+              </Text>
+              <Wrap>
+                {synonyms[key].map(s => (
+                  <WrapItem>
+                    <Tag key={s} variantColor="teal" size="lg">
+                      {s}
+                    </Tag>
+                  </WrapItem>
+                ))}
+              </Wrap>
+            </Container>
+          ))}
+          {synonyms &&
+          Object.keys(synonyms).length === 0 &&
+          Object.getPrototypeOf(synonyms) === Object.prototype ? (
+            <Text>None</Text>
+          ) : null}
         </Box>
-        <Box>
-          <Text fontSize="md">{pos}</Text>
-      </Box>
-      <Box py={6}>
-        {Object.keys(synonyms).map(key => (
-          <div>
-          <Text fontSize={{ base: "18px", md: "20px", lg: "22px" }}>{"Similarity: " + key + "%"}</Text>
-          <Text>
-            {renderWords(synonyms[key])}
-          </Text>
-          </div>
-        ))}
-      </Box>
+
+        <Box py={6}>
+          <Heading
+            as="h1"
+            size="md"
+            mb={4}
+            fontSize={{ base: '17px', md: '19px', lg: '22px' }}
+          >
+            Antonyms:
+          </Heading>
+          {Object.keys(antonyms).map(key => (
+            <Container key={key} my={3}>
+              <Text fontSize={{ base: '18px', md: '20px', lg: '22px' }}>
+                {'Similarity: ' + key + '%'}
+              </Text>
+              <Wrap>
+                {antonyms[key].map(s => (
+                  <WrapItem>
+                    <Tag key={s} variantColor="teal" size="lg">
+                      {s}
+                    </Tag>
+                  </WrapItem>
+                ))}
+              </Wrap>
+            </Container>
+          ))}
+          {antonyms &&
+          Object.keys(antonyms).length === 0 &&
+          Object.getPrototypeOf(antonyms) === Object.prototype ? (
+            <Text>None</Text>
+          ) : null}
+        </Box>
+      </Stack>
     </Container>
-    )
+  );
 }
