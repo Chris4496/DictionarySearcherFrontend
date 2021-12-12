@@ -124,7 +124,7 @@ export default function HomePage() {
         {renderNav()}
       </Center>
       {dictList.map(dict => (
-        <DisplayEntries word={value} dict={dict} />
+        <DisplayEntries word={value} dict={dict} key={dict.name} />
       ))}
 
       <DisplaySynAnt word={value} />

@@ -93,7 +93,7 @@ export default function DisplaySynAnt(props) {
                   p={{ base: '5', lg: '10' }}
                 >
                   {synant.map(s => (
-                    <SynAnt content={s} />
+                    <SynAnt content={s} key={s.definition} />
                   ))}
                 </VStack>
               </Center>

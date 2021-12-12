@@ -42,8 +42,8 @@ export default function SynAnt(props) {
               </Text>
               <Wrap>
                 {synonyms[key].map(s => (
-                  <WrapItem>
-                    <Tag key={s} variantColor="teal" size="lg">
+                  <WrapItem key={s}>
+                    <Tag variantColor="teal" size="lg">
                       {s}
                     </Tag>
                   </WrapItem>
@@ -74,8 +74,8 @@ export default function SynAnt(props) {
               </Text>
               <Wrap>
                 {antonyms[key].map(s => (
-                  <WrapItem>
-                    <Tag key={s} variantColor="teal" size="lg">
+                  <WrapItem key={s}>
+                    <Tag variantColor="teal" size="lg">
                       {s}
                     </Tag>
                   </WrapItem>
