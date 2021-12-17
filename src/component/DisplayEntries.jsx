@@ -23,14 +23,13 @@ export default function DisplayEntries(props) {
 
     const word = props.word;
     const dict = props.dict;
-    console.log(word);
     if (word === '') {
       setnoresult(true);
       setloading(false);
       return 0;
     }
 
-    const url = `https://fastapi-backend-kubygcfq3a-ue.a.run.app/${dict["name"]}/?search=${word}`;
+    const url = `https://fastapi-backend-kubygcfq3a-ue.a.run.app/${dict['name']}/?search=${word}`;
 
     const fetchData = async () => {
       try {
@@ -67,36 +66,36 @@ export default function DisplayEntries(props) {
           {noresult ? (
             <div>
               <Center p={10}>
-                <Heading fontSize={{ base: "2xl", lg: "3xl" }}>
+                <Heading fontSize={{ base: '2xl', lg: '3xl' }}>
                   Result from{' '}
                   {props.dict.name[0].toUpperCase() + props.dict.name.slice(1)}{' '}
                   Dictionary
                 </Heading>
               </Center>
-              <Divider orientation="horizontal" borderColor="grey.200"/>
+              <Divider orientation="horizontal" borderColor="grey.200" />
               <Center p="10">
-                <Heading >No Result</Heading>
+                <Heading>No Result</Heading>
               </Center>
             </div>
           ) : (
             <div>
               <Center p={10}>
-                <Heading fontSize={{ base: "2xl", lg: "3xl" }}>
+                <Heading fontSize={{ base: '2xl', lg: '3xl' }}>
                   Result from{' '}
                   {props.dict.name[0].toUpperCase() + props.dict.name.slice(1)}{' '}
                   Dictionary
                 </Heading>
               </Center>
-              <Divider orientation="horizontal" borderColor="grey.200"/>
+              <Divider orientation="horizontal" borderColor="grey.200" />
               <Center>
                 <VStack
-                  divider={<StackDivider orientation="horizontal"/>}
+                  divider={<StackDivider orientation="horizontal" />}
                   spacing={4}
                   align="stretch"
                   w={1100}
                   minW="100%"
                   maxW={1100}
-                  p={{ base: "5", lg: "10" }}
+                  p={{ base: '5', lg: '10' }}
                 >
                   {entries.map(entry => (
                     <Entry key={entry.id} content={entry} />
@@ -105,7 +104,13 @@ export default function DisplayEntries(props) {
               </Center>
               <Center>
                 <Container maxW={1000} mb="6">
-                  <Link href={props.dict.searchQuery + props.word} color="blue.500" isExternal>Link to Dictionary <ExternalLinkIcon mx="2px" /></Link>
+                  <Link
+                    href={props.dict.searchQuery + props.word}
+                    color="blue.500"
+                    isExternal
+                  >
+                    Link to Dictionary <ExternalLinkIcon mx="2px" />
+                  </Link>
                 </Container>
               </Center>
             </div>

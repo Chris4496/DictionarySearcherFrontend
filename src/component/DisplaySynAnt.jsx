@@ -34,7 +34,6 @@ export default function DisplaySynAnt(props) {
       try {
         const response = await fetch(url);
         const json = await response.json();
-        console.log(json);
         if (json['response'] === 'No result') {
           console.log('invalid word');
           setnoresult(true);

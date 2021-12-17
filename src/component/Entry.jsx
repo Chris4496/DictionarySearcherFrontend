@@ -16,7 +16,6 @@ export default function Entry(props) {
   const audioLinks = entry.audioLinks;
   const explanation = entry.explanation;
 
-  console.log(entry);
   function renderExplain(part) {
     if (part['type'] === 'main') {
       return (

@@ -5,8 +5,14 @@ export default function SynAnt(props) {
   const s = props.content;
   const definition = s.definition;
   const pos = s.pos;
-  const synonyms = s.synonyms;
-  const antonyms = s.antonyms;
+  let synonyms = s.synonyms;
+  let antonyms = s.antonyms;
+
+  synonyms = Object.entries(synonyms).sort(
+    (a, b) => Number(b[0]) - Number(a[0])
+  );
+
+  antonyms = Object.entries(antonyms);
 
   return (
     <Container maxW={1000} py="5">
@@ -35,13 +41,13 @@ export default function SynAnt(props) {
           >
             Synomyms:
           </Heading>
-          {Object.keys(synonyms).map(key => (
-            <Container key={key} my={3}>
+          {synonyms.map(synset => (
+            <Container key={synset[0]} my={3}>
               <Text fontSize={{ base: '18px', md: '20px', lg: '22px' }}>
-                {'Similarity: ' + key + '%'}
+                {'Similarity: ' + synset[0] + '%'}
               </Text>
               <Wrap>
-                {synonyms[key].map(s => (
+                {synset[1].map(s => (
                   <WrapItem key={s}>
                     <Tag variantColor="teal" size="lg">
                       {s}
@@ -51,11 +57,7 @@ export default function SynAnt(props) {
               </Wrap>
             </Container>
           ))}
-          {synonyms &&
-          Object.keys(synonyms).length === 0 &&
-          Object.getPrototypeOf(synonyms) === Object.prototype ? (
-            <Text>None</Text>
-          ) : null}
+          {synonyms.length > 0 ? null : <Text>None</Text>}
         </Box>
 
         <Box py={6}>
@@ -67,13 +69,13 @@ export default function SynAnt(props) {
           >
             Antonyms:
           </Heading>
-          {Object.keys(antonyms).map(key => (
-            <Container key={key} my={3}>
+          {antonyms.map(antset => (
+            <Container key={antset[0]} my={3}>
               <Text fontSize={{ base: '18px', md: '20px', lg: '22px' }}>
-                {'Similarity: ' + key + '%'}
+                {'Similarity: ' + antset[0] + '%'}
               </Text>
               <Wrap>
-                {antonyms[key].map(s => (
+                {antset[1].map(s => (
                   <WrapItem key={s}>
                     <Tag variantColor="teal" size="lg">
                       {s}
@@ -83,11 +85,7 @@ export default function SynAnt(props) {
               </Wrap>
             </Container>
           ))}
-          {antonyms &&
-          Object.keys(antonyms).length === 0 &&
-          Object.getPrototypeOf(antonyms) === Object.prototype ? (
-            <Text>None</Text>
-          ) : null}
+          {antonyms.length > 0 ? null : <Text>None</Text>}
         </Box>
       </Stack>
     </Container>

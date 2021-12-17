@@ -26,7 +26,6 @@ export default function HomePage() {
 
   function searchWord() {
     const word = valueref.current;
-    console.log(word.value);
     setvalue(word.value);
     navigate(`/search/${valueref.current.value}`);
   }
@@ -34,7 +33,6 @@ export default function HomePage() {
   function searchWordEnter(e) {
     if (e.key === 'Enter') {
       const word = valueref.current;
-      console.log(word.value);
       setvalue(word.value);
       navigate(`/search/${valueref.current.value}`);
     }
@@ -47,7 +45,6 @@ export default function HomePage() {
       try {
         const response = await fetch(url);
         const json = await response.json();
-        console.log(json);
         setdictList(json);
         // setdictList([
         //   {
