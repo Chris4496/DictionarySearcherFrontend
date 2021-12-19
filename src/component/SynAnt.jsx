@@ -12,7 +12,9 @@ export default function SynAnt(props) {
     (a, b) => Number(b[0]) - Number(a[0])
   );
 
-  antonyms = Object.entries(antonyms);
+  antonyms = Object.entries(antonyms).sort(
+    (a, b) => Number(a[0]) - Number(b[0])
+  );
 
   return (
     <Container maxW={1000} py="5">

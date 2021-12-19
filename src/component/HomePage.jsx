@@ -17,7 +17,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
   let params = useParams();
-  let navigate = useNavigate('undefined');
+  let navigate = useNavigate('');
 
   const valueref = useRef('');
 
