@@ -1,6 +1,6 @@
 import { Input, Center, IconButton } from '@chakra-ui/react';
 import { Heading } from '@chakra-ui/react';
-import { SearchIcon } from '@chakra-ui/icons';
+import { SearchIcon, ArrowUpIcon } from '@chakra-ui/icons';
 import { useState, useEffect, useRef } from 'react';
 import DisplayEntries from './DisplayEntries';
 import DisplaySynAnt from './DisplaySynAnt';
@@ -21,6 +21,7 @@ export default function HomePage() {
 
   const valueref = useRef('');
 
+  const [showButton, setShowButton] = useState(false);
   const [value, setvalue] = useState(params.word);
   const [dictList, setdictList] = useState([]);
 
@@ -37,6 +38,23 @@ export default function HomePage() {
       navigate(`/search/${valueref.current.value}`);
     }
   }
+
+  function handleScroll() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // for smoothly scrolling
+    });
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 500) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     const url = 'https://fastapi-backend-kubygcfq3a-ue.a.run.app/';
@@ -132,6 +150,7 @@ export default function HomePage() {
         mx="auto"
         maxW="7xl"
         py="12"
+        pb="20"
         px={{ base: '4', md: '8' }}
       >
         <Stack
@@ -152,6 +171,18 @@ export default function HomePage() {
         </Stack>
       </Box>
       {/* footer */}
+      {/* back to top button */}
+      {showButton && (
+        <Box
+          position="fixed"
+          bottom={['20px', '20px', '60px']}
+          right={['20px', '20px', '60px']}
+          zIndex={1}
+        >
+          <IconButton size="lg" onClick={handleScroll} icon={<ArrowUpIcon />} />
+        </Box>
+      )}
+      {/* back to top button */}
     </div>
   );
 }
