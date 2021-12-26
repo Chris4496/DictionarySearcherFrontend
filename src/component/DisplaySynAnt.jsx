@@ -1,5 +1,3 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
 import {
   Center,
   VStack,
@@ -12,6 +10,10 @@ import {
   Container,
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
+
+import React from 'react';
+import { useState, useEffect } from 'react';
+
 import SynAnt from './SynAnt';
 
 export default function DisplaySynAnt(props) {

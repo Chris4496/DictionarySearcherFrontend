@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import {
   Center,
   VStack,
@@ -11,6 +10,9 @@ import {
   Container,
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
+
+import { useState, useEffect } from 'react';
+
 import Entry from './Entry.jsx';
 
 export default function DisplayEntries(props) {

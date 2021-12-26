@@ -1,5 +1,14 @@
-import { Container, Heading, WrapItem } from '@chakra-ui/react';
-import { Box, Text, Stack, Tag, Wrap, StackDivider } from '@chakra-ui/react';
+import {
+  Container,
+  Heading,
+  WrapItem,
+  Box,
+  Text,
+  Stack,
+  Tag,
+  Wrap,
+  StackDivider,
+} from '@chakra-ui/react';
 
 export default function SynAnt(props) {
   const s = props.content;

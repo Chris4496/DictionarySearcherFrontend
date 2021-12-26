@@ -1,19 +1,22 @@
-import { Input, Center, IconButton } from '@chakra-ui/react';
-import { Heading } from '@chakra-ui/react';
-import { SearchIcon, ArrowUpIcon } from '@chakra-ui/icons';
-import { useState, useEffect, useRef } from 'react';
-import DisplayEntries from './DisplayEntries';
-import DisplaySynAnt from './DisplaySynAnt';
 import {
+  Input,
+  Center,
+  IconButton,
+  Heading,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  Stack,
   Box,
-  Text,
 } from '@chakra-ui/react';
-import { FaGithub } from 'react-icons/fa';
+import { SearchIcon } from '@chakra-ui/icons';
+
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+
+import DisplayEntries from './DisplayEntries';
+import DisplaySynAnt from './DisplaySynAnt';
+import Footer from './Footer';
+import BackToTopButton from './BackToTopButton';
 
 export default function HomePage() {
   let params = useParams();
@@ -21,7 +24,6 @@ export default function HomePage() {
 
   const valueref = useRef('');
 
-  const [showButton, setShowButton] = useState(false);
   const [value, setvalue] = useState(params.word);
   const [dictList, setdictList] = useState([]);
 
@@ -38,23 +40,6 @@ export default function HomePage() {
       navigate(`/search/${valueref.current.value}`);
     }
   }
-
-  function handleScroll() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth', // for smoothly scrolling
-    });
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 500) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
-    });
-  }, []);
 
   useEffect(() => {
     const url = 'https://fastapi-backend-kubygcfq3a-ue.a.run.app/';
@@ -109,7 +94,7 @@ export default function HomePage() {
   }
 
   return (
-    <div>
+    <Box>
       <Center>
         <Heading fontSize={{ base: 'xl', md: '2xl', lg: '3xl' }}>
           Search a word and get results from multiple dictionaries
@@ -143,46 +128,8 @@ export default function HomePage() {
       ))}
 
       <DisplaySynAnt word={value} />
-      {/* footer */}
-      <Box
-        as="footer"
-        role="contentinfo"
-        mx="auto"
-        maxW="7xl"
-        py="12"
-        pb="20"
-        px={{ base: '4', md: '8' }}
-      >
-        <Stack
-          direction="row"
-          spacing="4"
-          align="center"
-          justify="space-between"
-        >
-          <Text fontSize="sm">
-            &copy; {new Date().getFullYear()} Chris K. All rights reserved.
-          </Text>
-          <IconButton
-            as="a"
-            href="https://github.com/Chris4496/DictionarySearcherFrontend"
-            aria-label="GitHub"
-            icon={<FaGithub fontSize="20px" />}
-          />
-        </Stack>
-      </Box>
-      {/* footer */}
-      {/* back to top button */}
-      {showButton && (
-        <Box
-          position="fixed"
-          bottom={['20px', '20px', '60px']}
-          right={['20px', '20px', '60px']}
-          zIndex={1}
-        >
-          <IconButton size="lg" onClick={handleScroll} icon={<ArrowUpIcon />} />
-        </Box>
-      )}
-      {/* back to top button */}
-    </div>
+      <Footer />
+      <BackToTopButton />
+    </Box>
   );
 }
