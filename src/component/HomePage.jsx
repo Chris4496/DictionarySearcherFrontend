@@ -1,13 +1,4 @@
-import {
-  Input,
-  Center,
-  IconButton,
-  Heading,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  Box,
-} from '@chakra-ui/react';
+import { Input, Center, IconButton, Heading, Box } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 import { useState, useEffect, useRef } from 'react';
@@ -17,6 +8,7 @@ import DisplayEntries from './DisplayEntries';
 import DisplaySynAnt from './DisplaySynAnt';
 import Footer from './Footer';
 import BackToTopButton from './BackToTopButton';
+import NavBar from './NavBar';
 
 export default function HomePage() {
   let params = useParams();
@@ -71,28 +63,6 @@ export default function HomePage() {
     fetchData();
   }, []);
 
-  function renderNav() {
-    return (
-      <Breadcrumb
-        fontWeight="medium"
-        fontSize="lg"
-        borderRadius="xl"
-        m="3"
-        py="2"
-        px="4"
-        boxShadow="dark-lg"
-      >
-        {[...dictList, { name: 'SynAnt' }].map(dict => (
-          <BreadcrumbItem key={dict.name}>
-            <BreadcrumbLink href={`#${dict.name}`}>
-              {dict.name[0].toUpperCase() + dict.name.slice(1)}
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-        ))}
-      </Breadcrumb>
-    );
-  }
-
   return (
     <Box>
       <Center>
@@ -121,12 +91,11 @@ export default function HomePage() {
         />
       </Center>
       <Center maxWidth={1200} m="auto">
-        {renderNav()}
+        <NavBar dictList={dictList} />
       </Center>
       {dictList.map(dict => (
         <DisplayEntries word={value} dict={dict} key={dict.name} />
       ))}
-
       <DisplaySynAnt word={value} />
       <Footer />
       <BackToTopButton />
