@@ -1,4 +1,7 @@
 {
+  "resolutions": {
+    "mini-css-extract-plugin": "2.4.5"
+  },
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
