@@ -1,9 +1,19 @@
-import { Input, Center, IconButton, Heading, Box } from '@chakra-ui/react';
+import {
+  Input,
+  Center,
+  IconButton,
+  Heading,
+  Box,
+  HStack,
+} from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { ColorModeSwitcher } from '../ColorModeSwitcher';
+import { useCookies } from 'react-cookie';
 
+import CustomizePopup from './CustomizePopup';
 import DisplayEntries from './DisplayEntries';
 import DisplaySynAnt from './DisplaySynAnt';
 import Footer from './Footer';
@@ -17,7 +27,8 @@ export default function HomePage() {
   const valueref = useRef('');
 
   const [value, setvalue] = useState(params.word);
-  const [dictList, setdictList] = useState([]);
+  const [cookies, setCookie] = useCookies(['Layout_Preference']);
+  const [dictList, setdictList] = useState(cookies.Layout_Preference || []);
 
   function searchWord() {
     const word = valueref.current;
@@ -27,9 +38,7 @@ export default function HomePage() {
 
   function searchWordEnter(e) {
     if (e.key === 'Enter') {
-      const word = valueref.current;
-      setvalue(word.value);
-      navigate(`/search/${valueref.current.value}`);
+      searchWord();
     }
   }
 
@@ -59,12 +68,21 @@ export default function HomePage() {
         console.log('error', error);
       }
     };
-
-    fetchData();
-  }, []);
+    if (dictList.length === 0) {
+      fetchData();
+    }
+  }, [dictList]);
 
   return (
     <Box>
+      <HStack my={3} mx={1}>
+        <ColorModeSwitcher></ColorModeSwitcher>
+        <CustomizePopup
+          setdictList={setdictList}
+          setCookie={setCookie}
+          dictList={dictList}
+        />
+      </HStack>
       <Center>
         <Heading fontSize={{ base: 'xl', md: '2xl', lg: '3xl' }}>
           Search a word and get results from multiple dictionaries

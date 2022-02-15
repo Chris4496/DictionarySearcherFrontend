@@ -7,7 +7,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 ReactDOM.render(
   <StrictMode>
-    <ColorModeScript initialColorMode="dark" />
+    <ColorModeScript initialColorMode="light" />
     <App />
   </StrictMode>,
   document.getElementById('root')
